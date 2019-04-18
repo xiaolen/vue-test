@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<p>{{ msg | msgFormat('疯狂','123') | text }}</p>
+		</div>
+		<script>
+			Vue.filter('msgFormat',function(msg,arg,arg2){
+				//字符串的replace 方法,第一个参数除了可以写一个字符串之外 ,还可以写定义一个正则
+				return msg.replace(/单纯/g, arg+arg2)
+			})
+			Vue.filter('text',function(msg){
+				return msg + '==========='
+			})
+			var vm = new Vue({
+							el: '#app',
+							data: {
+								msg: '曾经，我也是一个单纯的少年，单纯的我傻傻的问，世界上最单纯的男人在哪里?'
+							},
+							methods: {
+
+							}
+						});
+		</script>
+	</body>
+
+</html>

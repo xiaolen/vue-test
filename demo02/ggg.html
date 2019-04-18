@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="ie=chrom"/>
+		<title>Document</title>
+		<!--导入vue的包-->
+		<style type="text/css">
+			[v-cloak]{
+				display: none;
+			}
+		</style>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.7/dist/vue.js"></script>-->
+	</head>
+
+	<body>
+		
+		<div id="app">
+			<h4 v-html="message"></h4>
+			<input type="button" value="快跑啊" @click="run" />
+			<input type="button" value="呼叫二营长开炮" @click="stop" />
+		</div>
+		<script >
+			//new出来的VM对象就是MVVM中的VM调度器
+			var vm = new Vue({
+				el:'#app',
+				data:{//调用要用this关键字
+					//通过vue提供的指令把数据渲染到页面上，
+					message: '<h1>快跑啊，鬼子进村了</h1>',					
+					dsq: null
+				},
+				methods:{//定义当前new的vue对象的可用方法
+//					if(this.dsq != null) {
+//						return;
+//					},
+					run() {
+						if(this.dsq != null ) return;
+						this.dsq = setInterval( () => {
+							// var start = this.msg.substring(0, 1);
+							var start = this.message.substring(0, 1)
+							var end = this.message.substring(1);
+							this.message = end + start;
+						}, 400)
+					},
+					stop(){
+						clearInterval(this.dsq)
+						this.dsq = null
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

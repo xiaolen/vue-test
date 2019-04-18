@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<input type="button" value="浪起来" v-on:click="lang" />
+			<input type="button" value="低调" @click="stop" />
+			<h1>{{ msg }}</h1>
+		</div>
+		<script>
+			//注意在vm实例中,如果想要获取data上的数据,或者想要调用methode中的方法,
+			// 必须通过this.数据属性名 或者 this方法名来进行访问,就表示 我们new出来的vm实力对象
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: '猥琐发育，别浪······~~~~~~',
+					intervalId: null //在data上定义 定时器
+				},
+				methods: {
+					lang() {
+						// console.log(this.msg)
+						// var _this = this
+						//将定时器变量放到data中
+						if(this.intervalId != null ) return;
+						
+						this.intervalId = setInterval(() => {
+
+							//获取到头的第一个字符
+							var start = this.msg.substring(0, 1);
+							//获取到后面的所有字符
+							var end = this.msg.substring(1);
+							//重新拼接得到新的字符串,并且赋值给 this.msg
+							this.msg = end + start
+
+							//注意vm实例,监听自己身上data中所有数据
+						}, 1000)
+						
+					},
+					stop(){
+						clearInterval(this.intervalId)
+						//清除定时器后 需要重置为null
+						this.intervalId = null;
+						
+					}
+				}
+			})
+			//1.给浪起来按钮绑定一个点击事件 v-on
+			//2.在按钮的事件函数中处理函数中写
+			//3.
+		</script>
+	</body>
+</html>

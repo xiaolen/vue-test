@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+
+		<style>
+			.red {
+				color: red;
+			}
+
+			.thin {
+				font-weight: 200;
+			}
+
+			.italic {
+				font-style: italic;
+			}
+
+			.active {
+				letter-spacing: 0.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			
+			<!-- <p>{{ list[0] }}</p> -->
+			<!-- 遍历集合 -->
+			<!-- <p v-for="item in list">{{ item }}</p> -->
+			<p v-for="(user, i) in list">id:{{ user.id }}---名称{{ user.name }}---索引值{{ i }}</p>
+		
+		
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					list: [
+						{ id: 1,name:'za1' },
+						{ id: 2,name:'za2' },
+						{ id: 3,name:'za3' },
+						{ id: 4,name:'za4' },
+						{ id: 5,name:'za5' },
+						{ id: 6,name:'za6' }
+					]
+				},
+				methods: {
+
+				}
+			})
+		</script>
+	</body>
+</html>

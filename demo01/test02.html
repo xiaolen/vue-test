@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+	<!-- 1.如何定义一个基本的vue代码结构 -->
+	<!-- 2.插值表达式和v-text -->
+	<!-- 3.v-cloak -->
+	<!-- 4.v-html -->
+	<!-- 5.v-bind vue提供的属性绑定机制 缩写是 ： -->
+	<!-- 6.v-on vue提供的事件绑定机制 缩写是 @ -->
+	<body>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+		<div id="app">
+			<input type="button" value="提交" @click="show" />
+
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: '123',
+
+				},
+				methods: {
+					//这个methods属性定义当前vue实现的所有可用的方法
+					show: function() {
+						alert("hello")
+					}
+				}
+			})
+			// 			document.getElementById('btn').onclick = function(){
+			// 				alert('hello!')
+			// 			}
+		</script>
+	</body>
+</html>

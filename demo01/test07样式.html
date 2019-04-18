@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+
+		<style>
+			.red {
+				color: red;
+			}
+
+			.thin {
+				font-weight: 200;
+			}
+
+			.italic {
+				font-style: italic;
+			}
+
+			.active {
+				letter-spacing: 0.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- <h1 class="red thin">很大的H1哈哈好</h1> -->
+			<!-- 第一种使用方式，直接使用数组 -->
+			<!-- <h1 :class="['red','italic']">很大的H1哈哈好</h1> -->
+			<!-- 使用三元运算表达式 -->
+			<!-- <h1 :class="['thin','italic',flag?'active':'']">很大的H1哈哈好</h1> -->
+			<!-- 在数组中使用对象和三元表达式 -->
+			<!-- <h1 :class="['thin','italic',{'active':flag}]">很大的H1哈哈好</h1> -->
+			
+			
+			<h1 :class="classObj">很大的H1哈哈好</h1>
+		
+		
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					flag: true,
+					classObj: {red: true, thin: true, italic: false, avtive: false}
+				},
+				methods: {
+
+				}
+			})
+		</script>
+	</body>
+</html>

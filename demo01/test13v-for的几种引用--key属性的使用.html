@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- <script src="https://cdn.staticfile.org/vue/2.5.17/vue.min.js"></script> -->
+		<!-- <script src=""https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> -->
+		<script src="js/vue.js"></script>
+
+		<style>
+			.red {
+				color: red;
+			}
+
+			.thin {
+				font-weight: 200;
+			}
+
+			.italic {
+				font-style: italic;
+			}
+
+			.active {
+				letter-spacing: 0.5em;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<div>
+				<label>
+					Id:
+					<input type="text" v-model="id" />
+				</label>
+				<label>
+					Name:
+					<input type="text" v-model="name" />
+				</label>
+				<label>
+					添加:
+					<input type="button" value="添加" @click="add"/>
+				</label>
+			</div>
+			
+			<!-- v-for循环时候 key属性只能使用number获取string -->
+			<!-- key在使用的时候 必须使用v-bind 属性绑定的形式，指定key的值-->
+			<!-- 在组件中，使用v-for循环的时候或者在一些特殊情况中，如果v-for有问题，必须在使用v-for的同时，指定唯一的字符串、数字 类型 -->
+			<p v-for="item in list" :key="item">
+				<input type="checkbox" />
+				{{ item.id }}----{{ item.name }}
+			</p>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					id: '',
+					name: '',
+					list: [{
+							id: 1,
+							name: '历史'
+						},
+						{
+							id: 2,
+							name: '密码'
+						},
+						{
+							id: 3,
+							name: '方法'
+						},
+						{
+							id: 4,
+							name: '信息'
+						},
+						{
+							id: 5,
+							name: '让人'
+						},
+						{
+							id: 6,
+							name: '调通'
+						}
+					]
+				},
+				methods: {
+
+					add(){
+						this.list.push({id: this.id,name: this.name})
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

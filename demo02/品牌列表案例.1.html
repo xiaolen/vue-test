@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!-- <style type="text/css">
+			table tr td,
+			th {
+				border: 1px solid black;
+			}
+		</style> -->
+		<title>Bootstrap 实例 - 响应式表格</title>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app" class="table-responsive">
+
+			<div>
+				<div>
+					<h3>添加商品</h3>
+				</div>
+				<div class="panel-body form-inline">
+					<label>
+						Id:
+						<input type="text" v-model="id" class="form-control" />
+					</label>
+					<label>
+						Name:
+						<input type="text" v-model="name" class="form-control" />
+					</label>
+					<!-- 在vue中，使用事件绑定机制，为元素指定处理函数的时候，如果加了小括号，就可以给函数传参 -->
+					<input type="button" value="添加" class="btn btn-primay" @click="add()" />
+					搜索名称关键字:
+					<input type="text"  class="form-control" v-model="keywords"/>
+				</div>
+			</div>
+
+
+			<!-- width="400" border="0" cellspacing="0" cellpadding="0" -->
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Ctime</th>
+						<th>Operation</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<!-- <tr v-for="item in list" :key="item.id"> -->
+					<!-- 之前，v-for中的数据，都是从data上的list中直接渲染过来的 -->
+					<!-- 现在，我们自定义一个search方法，同时把所有的关键字，通过传参的形式，传递给了search方法 -->
+					<!-- 在search方法内部，通过执行for循环，把所有符合搜索关键字数据，保存到一个新的数组中返回 -->
+					<tr v-for="item in search(keywords)" :key="item.id">
+						<td>{{ item.id }}</td>
+						<td v-text="item.name"></td>
+						<td>{{ item.ctime }}</td>
+						<td>
+							<!-- 阻止默认行为a链接有刷新页面的效果 -->
+							<a href="" @click.prevent="del(item.id)">删除</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					id: '',
+					name: '',
+					keywords: '',
+					list: [{
+							id: 1,
+							name: '奥迪',
+							ctime: new Date()
+						},
+						{
+							id: 2,
+							name: '捷达',
+							ctime: new Date()
+						},
+						{
+							id: 3,
+							name: '奔驰',
+							ctime: new Date()
+						},
+						{
+							id: 4,
+							name: '现代',
+							ctime: new Date()
+						}
+					]
+				},
+				methods: {
+					add() {
+						//添加的方法
+						// console.log('ok')
+						//1.获取到id和name,直接从data上面获取
+						//2.组织出一个对象
+						//3.吧这个对象,调用数组的相关方法,添加到当前data上的list中
+						//4.注意:在vue中已经实现了数据的双向绑定,
+						// 每当我们修改了 data 中的数据 vue会默认监听到数据的改动,自动把最新的数据应用到页面上;
+						// vue主要是在操作data(需要的数据)数据和methods(主要业务逻辑)
+
+						var car = {
+							id: this.id,
+							name: this.name,
+							ctime: new Date()
+						}
+						this.list.push(car)
+						this.id = this.name = ''
+					},
+					del(id) {
+						//根据id删除数据
+						//分析
+						// 1.如何根据id找到要删除数据的索引
+						// 2.找到索引直接调用数组的splice方法
+						// 在数组的some 方法中,如果return true,就会立即终止这个数组的后续循环
+						// 方法一
+						// 									this.list.some((item,i)=>{
+						// 										if(item.id == id){
+						// 											this.list.splice(i,1)
+						// 											return true;
+						// 										}
+						// 									})
+						// 方法二
+						var index = this.list.findIndex(item => {
+							if (this.id == id) {
+								return true;
+							}
+						})
+						this.list.splice(index, 1)
+					},
+					search(keywords) {
+						//根据关键字循环
+						// 									var newList = []
+						// 									this.list.forEach(item => {
+						// 										if(item.name.indexOf(keywords)!=-1){
+						// 											newList.push(item)
+						// 										}
+						// 									})
+						// 									return newList
+
+						//注意:forEach some filter findIndex 这些都属于数组的新方法
+						//都会对数组中的每一项,进行遍历,执行相关的操作;
+
+
+						//注意在es6中,为字符串提供了一个行的方法,叫做 String.prototype.includes
+						// 要包含的字符串
+						// 如果包含,则返回true 否则返回false
+						// contain
+						return this.list.filter(item => {
+							if (item.name.includes(keywords)) {
+								return item
+							}
+						})
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
