@@ -48,6 +48,13 @@
 			</table>
 		</div>
 		<script>
+			
+			//配置全局的路径
+			// 如果通过全局配置了请求的数据接口 根域名,则在每次单独发起的http请求时候,请求的url
+			Vue.http.options.root = 'http://localhost:8081/';
+			
+			//全局启用emulateJSON
+			Vue.http.options.emulateJSON = true;
 			// 创建 vue 实例,得到viewModel
 			var vm = new Vue({
 				el: '#app',
@@ -79,20 +86,35 @@
 							// {emulateJSON: true},以普通表单格式,将数据提交给服务器
 							// application/x-www-form-urlencoded
 						//3.在post方法中使用then来设置成功的回调函数，如果想要拿到成功的结果需要result。body
-						 this.$http.post('http://localhost:8081/post',{name: this.name},{emulateJSON:true}).then(
+// 						 this.$http.post('post',{name: this.name},{ emulateJSON: true}).then(
+// 						 result => {
+// 							 // var result = result.body
+// 							 console.log(result)
+// 							if(result.status === 200){
+// 								//成功了
+// 								this.list.push(result.body)
+// 								// this.getAllList()
+// 								//清空 name
+// 								this.name = ''
+// 							} else{
+// 								//失败了
+// 								alert('添加失败')
+// 							}
+// 						 })
+						 this.$http.post('post',{name: this.name}).then(
 						 result => {
-							 // var result = result.body
-							 console.log(result)
-							if(result.status === 200){
-								//成功了
-								this.list.push(result.body)
-								// this.getAllList()
-								//清空 name
-								this.name = ''
-							} else{
-								//失败了
-								alert('添加失败')
-							}
+						 							 // var result = result.body
+						 							 console.log(result)
+						 							if(result.status === 200){
+						 								//成功了
+						 								this.list.push(result.body)
+						 								// this.getAllList()
+						 								//清空 name
+						 								this.name = ''
+						 							} else{
+						 								//失败了
+						 								alert('添加失败')
+						 							}
 						 })
 							
 					},
@@ -105,7 +127,7 @@
 						//4.当通过 then 指定回调函数中,可以拿到数据服务器返回值的result
 						//5.先判断result.status是否等于0,如果等于0，就成功,可以把
 						// result.message 赋值给 this.list; 如果不等于0,可以弹框提醒,获取数据失败!
-						this.$http.get('http://localhost:8081/get').then(result =>{
+						this.$http.get('get').then(result =>{
 							console.log(result.body);
 							console.log(result);
 						
@@ -123,7 +145,7 @@
 						
 					},
 					del(id){
-						this.$http.get('http://localhost:8081/delId/'+id).then(result => {
+						this.$http.get('delId/'+id).then(result => {
 							
 							console.log(result);
 							
