@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<!-- 第三方类库 -->
+		<link rel="stylesheet" href="css/animate.css" />
+		<style>
+
+		</style>
+
+	</head>
+	<body>
+		<div id="app">
+			<a href="" @click.prevent="comName='login'">登录</a>
+			<a href="" @click.prevent="comName='register'">注册</a>
+			<!-- Vue提供了 component，来展示对应名称的组件 -->
+			<!-- component 是一个占位符， :is 属性可以用来指定展示的组件的名称 -->
+			<component :is="comName"></component>
+			
+			<!-- 总结：当前学习的几个vue提供的标签 -->
+			<!-- component template，transition，transitionGroup -->
+			
+		</div>
+
+		<template id="tmp1">
+				<h3> 登录组件 </h3>
+		</template>
+		
+		<template id="tmp2">
+				<h3> 注册组件 </h3>
+		</template>
+		<script>
+			// 这是一个计速器额组件,身上有个按钮,
+			// 每当点击按钮,就而昂data中的count值加一
+			var dataObj = {
+				count: 0
+			}
+
+
+			// 组件名称是 字符串
+			Vue.component('login', {
+
+				template: '#tmp1',
+			
+			});
+			Vue.component('register', {
+			
+				template: '#tmp2',
+				
+			});
+
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					// 当前 component中的 :is 绑定的组件的名称
+					comName: 'login'
+				},
+				methods: {
+
+				}
+			});
+		</script>
+</html>
