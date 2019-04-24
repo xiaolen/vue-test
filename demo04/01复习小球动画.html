@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Document111</title>
+		<script src="js/vue.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<!-- 第三方类库 -->
+		<link rel="stylesheet" href="css/animate.css" />
+		<style>
+			.ball{
+				width: 15px;
+				height: 15px;
+				background-color: red;
+				border-radius: 50%;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="加入购物车" @click="flag=!flag" />
+			<transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+				<div class="ball" v-show="flag"></div>
+			</transition>
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					flag: false
+				},
+				methods: {
+					beforeEnter(el) {
+						el.style.transform = 'translate(0,0)'
+					},
+					enter(el, done) {
+						el.offsetWidth
+
+						el.style.transform = 'translate(150px, 450px)'
+						//特别注意单词是否写正确
+						el.style.transition = 'all 1s ease'
+						done()
+					},
+					afterEnter(el) {
+						// 这句话,第一个功能是控制小球的显示与隐藏
+						// 第二个功能:直接跳过后半场动画 让flag标识直接变为false
+						// 当第二次在点击 按钮的时候 flag false --> true
+						this.flag = !this.flag
+						// el.style.opacity = 0.5
+						
+						// Vue 把一个完整的动画,使用钩子函数拆分为两部风
+						// 我们使用flag 标识符  来表示动画切换
+						//刚以开始,flag = falg --> ture -->false 
+					}
+				}
+			});
+		</script>
+</html>

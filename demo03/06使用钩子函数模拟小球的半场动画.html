@@ -12,7 +12,7 @@
 		width:15px; 
 		height:15px; 
 		border-radius:50%; 
-		background-color: rebeccapurple
+		background-color: red
 		}
 		</style>
 	</head>
@@ -35,38 +35,27 @@
 					// 注意:动画钩子函数的第一个参数:el,表示 要执行动画的那个DOM元素,是个原生的JS DOM对象
 					// 大家可以认为,el是通过 document.getElementById('') 方式获取到原生JS DOM对象
 
-// 							beforeEnter(el){
-// 								// beforeEnter 表示动画入场,此时,动画尚未开始,可以 在 beforeEnter 中,设置元素开始动画之前的起始位置
-// 								el.style.transform = "translate(0, 0)"
-// 								
-// 							},
-// // 					这句话,没有实际作用,但是,如果不写,出不来动画
-// // 					可以认为el.offsetwidth 会强制动画刷新
-// 							enter(el,done){
-// 								el.offsetWidth
-// 								// enter 表示动画 开始之后的样式,这里,可以设置小球完成动画之后的结束状态
-// 								el.style.transform = "translate(150px, 450px)"
-// 								el.style.transition = 'all ls ease'
-// 								done()
-// 							},
-// 							afterEnter(el){
-// 								// 动画完成之后,会调用afterEnter
-// 								console.log('ok')
-// 								this.flag = !this.flag
-// 							}
-					beforeEnter(el) {
-						// 入场之前，可以设置元素的起始样式
-						el.style.transform = "translate(0, 0)"
-					},
-					enter(el, done) {
-						el.offsetWidth
-						el.style.transform = "translate(150px, 450px)"
-						el.style.transition = 'all 1s ease'
-						done()
-					},
-					afterEnter(el) {
-						this.flag = !this.flag
-					}
+							beforeEnter(el) {
+								// beforeEnter 表示动画入场,此时,动画尚未开始,可以 在 beforeEnter 中,设置元素开始动画之前的起始位置
+								el.style.transform = "translate(0, 0)"
+								
+							},
+		// 					这句话,没有实际作用,但是,如果不写,出不来动画
+		// 					可以认为el.offsetwidth 会强制动画刷新
+							enter(el, done) {
+								el.offsetWidth
+								// enter 表示动画 开始之后的样式,这里,可以设置小球完成动画之后的结束状态
+								el.style.transform = "translate(150px, 450px)"
+								// 这里是1秒不是l字母小心混淆
+								el.style.transition = 'all 1s ease'
+								done()
+							},
+							afterEnter(el) {
+								// 动画完成之后,会调用afterEnter
+								console.log('ok')
+								this.flag = !this.flag
+							}
+
 				}
 			});
 		</script>

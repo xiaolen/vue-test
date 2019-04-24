@@ -31,6 +31,9 @@
 			// 需要把大写的驼峰改为小写的字母,同时,两哥单词之间,使用 - 链接;
 			// 如果不使用驼峰,则直接拿名称来使用即可
 			// Vue.component('myComl',coml)
+			
+			// Vue.component参数一组件的名称,将来在引用组件的时候,就是一个 标签形式来引入,它的
+			// 第二参数:Vue.extend创建的组件 其中 
 			Vue.component('myComl',Vue.extend({
 				template:'<h3>这是使用 Vue.extend 创建的组件</h3>',
 			}))
