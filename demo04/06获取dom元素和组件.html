@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Document</title>
+		<script src="js/vue.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<!-- 第三方类库 -->
+		<link rel="stylesheet" href="css/animate.css" />
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<style>
+			.ball {
+				width: 15px;
+				height: 15px;
+				background-color: red;
+				border-radius: 50%;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div id="app">
+			<h3>哈哈哈哈哈哈哈，娜娜</h3>
+		</div>
+
+		<script>
+		
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					
+				},
+				beforeCreate() {
+					// 这里不能调用localComments方法,因为在执行这个钩子函数的时候,data和menthods都还没有被初始化好
+				},
+				created() {
+					this.loadComments()
+				},
+				methods: {
+					
+					
+				},
+				// components: {
+				// 	
+				// }
+			});
+		</script>
+</html>
