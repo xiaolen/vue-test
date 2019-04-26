@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Document</title>
+		<script src="js/vue.js"></script>
+		<!-- <script src="js/vue-resource.js"></script> -->
+		<script src="js/vue-router.js"></script>
+		<!-- 第三方类库 -->
+		<!-- 	<link rel="stylesheet" href="css/animate.css" />
+		<link rel="stylesheet" href="css/bootstrap.css" /> -->
+		<!-- <style>
+			.ball {
+				width: 15px;
+				height: 15px;
+				background-color: red;
+				border-radius: 50%;
+			}
+		</style> -->
+
+	</head>
+	<body>
+		<div id="app">
+			<a href="#/login">login</a>
+			<a href="#/register">register</a>
+			<!-- vue-router提供的元素 专门用来当作占位符的，将来，路由规则，匹配到的组件，就会展示到这个vue-router中去 -->
+			<!-- 所以：我们可以把vue-router认为是一个占位符 -->
+			<router-view></router-view>
+		</div>
+		<script>
+			// 创建一个组件对象,当导入vue-router包之后在window全局对象中,就有了一个路由的构造函数,叫做Vuerouter
+			// 在 new 路由对象的时候.可以为构造函数,传递一个配置对象
+			var routerObj = new VueRouter({
+				//route这个配置对象中的route表示[路由匹配规则] 的意思
+				routes: [
+					//每个路由规则,都是一个对象,这个规则对象,身上,有两个必须的属性:
+					// 属性1 是 path,表示监听哪个路由链接地址;
+					// 属性2 是 component,表示,如果 路由是前面匹配到path,则展示 component 属性对应的那个组件
+					// component 必须是组件的模板对象不能是组件的属性名称
+					{path: '/login',component:login},
+					{path: 'register',component:register}
+				]
+			})
+
+
+			// 组件的模板对象 
+			var login = {
+				template: '<h1>登录组件</h1>'
+			}
+
+			var register = {
+				template: '<h1>注册组件</h1>'
+			}
+
+			var vm = new Vue({
+				el: '#app',
+				data: {},
+				methods: {},
+				// 将路由规则对象 ,注册到vm实例上,用来监听url地址的变化,然后展示
+				router: routerObj
+
+				// components: {
+				// 	login
+				// }
+			});
+		</script>
+</html>
