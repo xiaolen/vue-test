@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Document</title>
+		<script src="js/vue.js"></script>
+		<!-- <script src="js/vue-resource.js"></script> -->
+		<script src="js/vue-router.js"></script>
+		<!-- 第三方类库 -->
+		<!-- <link rel="stylesheet" href="css/animate.css" />
+		<link rel="stylesheet" href="css/bootstrap.css" /> -->
+		<style>
+		
+		</style>
+
+	</head>
+	<body>
+		<div id="app">
+	
+			<!-- 如果在路由中，使用查询字符串 ,给路由传递参数，则不需要修改 路由的规则 path属性 -->
+			<router-link to="/login?id=10&name=zs" tag="span">登录</router-link>
+			<router-link to="/register">注册</router-link>
+			<transition mode="out-in">
+			<router-view></router-view>
+			</transition>
+		</div>
+
+		<script>
+			
+			// 组件的模板对象 
+			var login = {
+				template: '<h1>登录组件---- {{$route.query.id}}---- {{$route.query.name}}</h1>',
+				data(){
+					return {
+						msg:'123'
+					}
+				},
+				created(){
+					//组件的生命周期
+					// console.log(this.$route)
+					console.log(this.$route.query.id)
+				}
+			}
+
+			var register = {
+				template: '<h1>注册组件</h1>'
+			}
+
+
+		
+			var router = new VueRouter({
+			
+				routes: [
+				
+					{path:'/',redirect:'/login'},
+					{path: '/login',component: login},
+					{path: '/register',component: register}
+				],
+				linkActiveClass: 'myactive'
+			})
+
+
+
+			var vm = new Vue({
+				el: '#app',
+				data: {},
+				methods: {},
+			
+				router
+
+				// components: {
+				// 	login
+				// }
+			});
+		</script>
+</html>
