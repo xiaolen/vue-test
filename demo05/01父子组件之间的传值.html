@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-router.js"></script>
+
+	<style>
+	</style>
+</head>
+
+<body>
+	<div id="app">
+
+		<coml v-bind:parentmsg></coml>
+	</div>
+
+	<template id="tmp1">
+
+		<div>
+			<h1>这是是子元素---{{parentmsg}}</h1>
+		</div>
+	</template>
+
+	<script>
+		var coml = {
+			template: '#tmp1',
+			props: ['parentmsg']
+		}
+
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				msg: '这是父组件中的数据，爸爸有100块钱，my son，你要不'
+			},
+			methods: {},
+
+			// router，
+
+			components: {
+				coml
+			}
+		});
+	</script>
+
+</html>
