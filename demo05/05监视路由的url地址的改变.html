@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-router.js"></script>
+
+	<style>
+	</style>
+</head>
+
+<body>
+	<div id="app">
+
+		<router-link to="/login">login</router-link>
+		<router-link to="/register">register</router-link>
+
+		<!-- 容器 -->
+		<router-view></router-view>
+
+	</div>
+
+
+	<script>
+
+		var login = {
+			template: '<h3>这是登录的子组件，这个组件的奔波霸开发的</h3>'
+
+		}
+		var register = {
+			template: '<h3>这是登录的子组件，这个组件的霸波奔开发的</h3>'
+		}
+
+		var router = new VueRouter({
+			routes:[
+				{path: '/',component:login},
+				{path: '/login',component:login},
+				{path: '/register',component:register}
+			],
+			// 和激活相关的类
+			linkActiveClass:'myactive'
+		})
+
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				firstname: '',
+				lastname: '',
+				fullname: ''
+
+			},
+			methods: {
+
+			},
+			watch: {
+				'$route.path': function (newVal, oldVal) {
+					// console.log(newVal + '-' + oldVal)
+					if(newVal === '/login'){
+						console.log('欢迎进入登录页面')
+					}else if(newVal === '/register'){
+						console.log('欢迎进入注册页面')
+					}
+				}
+			},
+			router
+
+		});
+	</script>
+
+</html>

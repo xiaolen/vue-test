@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-router.js"></script>
+
+	<style>
+	</style>
+</head>
+
+<body>
+	<div id="app">
+
+	<router-link to="/login">login</router-link>	
+	<router-link to="/register">register</router-link>	
+
+		<!-- 容器 -->
+	<router-view></router-view>
+	</div>
+
+
+	<script>
+		
+		// 创建子组件
+		var login = {
+			template:'<h3>这是登录的子组件，这个组件的奔波霸开发的</h3>'
+		}
+
+		var register = {
+			template:'<h3>这是登录的子组件，这个组件的霸波奔开发的</h3>'
+		}
+
+
+		// 创建一个路由对象
+		var router = new VueRouter({
+			// 路由规则数组
+			routes:[
+				{path: '/',component:login},
+				{path: '/login',component:login},
+				{path: '/register',component:register}
+			],
+			// 和激活相关的类
+			linkActiveClass:'myactive'
+		})
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				msg: '这是父组件中的数据，爸爸有100块钱，my son，你要不'
+
+			},
+			methods: {
+				getMsgFormSon(data){
+					this.msgFormSon = data
+					console.log(this.msgFormSon)
+				}
+			},
+
+			router
+
+			// components: {
+			// 	coml
+			// }
+		});
+	</script>
+
+</html>

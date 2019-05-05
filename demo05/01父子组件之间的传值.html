@@ -14,20 +14,30 @@
 <body>
 	<div id="app">
 
-		<coml v-bind:parentmsg></coml>
+		<coml v-bind:parentmsg="msg" @func="getMsgFormSon"></coml>
 	</div>
 
 	<template id="tmp1">
-
 		<div>
 			<h1>这是是子元素---{{parentmsg}}</h1>
+			<input type="button" value="向父组件传递消息" @click="sendMsg" >
 		</div>
 	</template>
 
 	<script>
 		var coml = {
 			template: '#tmp1',
-			props: ['parentmsg']
+			data(){
+				return{
+					msg:'做一个孝顺的孩子，给爸爸一些钱去挥霍吧!'
+				}
+			},
+			props: ['parentmsg'],
+			methods:{
+				sendMsg(){
+					this.$emit('func',this.msg)
+				}
+			}
 		}
 
 
@@ -35,8 +45,14 @@
 			el: '#app',
 			data: {
 				msg: '这是父组件中的数据，爸爸有100块钱，my son，你要不'
+
 			},
-			methods: {},
+			methods: {
+				getMsgFormSon(data){
+					this.msgFormSon = data
+					console.log(this.msgFormSon)
+				}
+			},
 
 			// router，
 
