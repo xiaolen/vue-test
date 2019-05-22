@@ -12,9 +12,9 @@
 <body>
 <div id="app">
 	<input type="button" value="toggle" @click="flag=!flag"/>
-	<!-- <transition enter-active-class="anlmated bounceIn" leave-active-class="anlmated bounceOut">
+	<transition enter-active-class="anlmated bounceIn" leave-active-class="anlmated bounceOut">
 		<h3 v-if="flag">这是一个H3</h3>
-	</transition> -->
+	</transition>
 	<!-- 使用 :duration="毫秒值" 来统一设置 入场 和 离场 时间的动画时长 离场时间 -->
 	<!-- <transition enter-active-class="bounceIn" leave-active-class="bounceOut" :duration="400">
 		<h3 v-if="flag" class="anlmated">这是一个H3</h3>
