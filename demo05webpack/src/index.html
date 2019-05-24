@@ -4,11 +4,14 @@
 		<meta charset="utf-8" />
 		<title>document</title>
 		<!--注意： 不推荐在这里引用任何包和任何css文件 -->
-		<!-- <script src="../dist/bundle.js"></script> -->
-		<script src="http://localhost:3000/bundle.js"></script>
+		<script src="/bundle.js"></script>
+		<!-- <script src="http://localhost:3000/bundle.js"></script> -->
 	</head>
 	<body>
 		
+<!-- bundle.js在一系列配置后已经加载到内存中 -->
+<!-- 现在要将html放入内存中 -->
+<!-- 需要安装的插件是：npm i html-webpack-plugin -D -->
 		<ul>
 			<li>这是第1个li</li>
 			<li>这是第21个li</li>

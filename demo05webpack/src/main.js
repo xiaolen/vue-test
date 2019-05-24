@@ -10,7 +10,7 @@ import $ from 'jquery'
 
 
 $(function (){
-    $('li:odd').css('backgroundColor','red')
+    $('li:odd').css('backgroundColor','yellow')
     $('li:even').css('backgroundColor',function(){
         return '#' + 'D97634'
     })
@@ -31,4 +31,4 @@ $(function (){
 
 // 在package.json中
 // --open --port 3000 --contentBase src --hot
-// --open --port是指定端口号 --contentBase src加载指定的目录  --hot是加载修改的内容到本地(相当于你修改了其中的某个东西,他不会再次生成bundle文件,只是单独修补修改后的内容)
+// --open 默认修改之后打开浏览器 --port是指定端口号 --contentBase src加载指定的目录  --hot是加载修改的内容到本地(相当于你修改了其中的某个东西,他不会再次生成bundle文件,只是单独修补修改后的内容)
