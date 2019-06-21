@@ -4,8 +4,15 @@
 		<meta charset="utf-8" />
 		<title>document</title>
 		<!--注意： 不推荐在这里引用任何包和任何css文件 -->
-		<script src="/bundle.js"></script>
+		<!-- 因为main中代码，涉及到es6的新语法 ，但是浏览器中不识别 -->
+
+		<!-- 通过webpack 这个么一个前端构建工具，把main.js做了一下处理，生成一个bundle.js的文件 -->
 		<!-- <script src="http://localhost:3000/bundle.js"></script> -->
+
+		<!-- 当使用 html-webpack-plugin之后，我们不再需要手动处理 bundle.js 的引用路径，因为这个插件，已经帮我们启动创建了一个合适的script，并且，引用了正确的路径 -->
+		<!-- <script src="/bundle.js"></script> -->
+		<!-- css会发起第二次请求所以不推荐 -->
+		<!-- <link rel="stylesheet" href="./css/index.css"> -->
 	</head>
 	<body>
 		
@@ -14,7 +21,7 @@
 <!-- 需要安装的插件是：npm i html-webpack-plugin -D -->
 		<ul>
 			<li>这是第1个li</li>
-			<li>这是第21个li</li>
+			<li>这是第2个li</li>
 			<li>这是第3个li</li>
 			<li>这是第4个li</li>
 			<li>这是第5个li</li>

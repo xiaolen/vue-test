@@ -5,6 +5,9 @@ const webpack = require('webpack')
 
 // 导入在内存中生成的html 页面的插件
 // 只要是插件，都一定要 放在 plugins 节点中去
+// 这个插件的两个作用
+// 1.自动在内存中根据指定页面生成一个内存中的页面
+// 自动，把打包好的bundle.js追加到页面中去
 const htmlWebpackPlugin = require('html-webpack-plugin')
 
 // 这个配置文件，起始就是一个js文件，通过Node中的模块操作，向外暴露了一个配置对象
@@ -46,9 +49,20 @@ module.exports = {
 
         new htmlWebpackPlugin({
             // 创建一个 在内存中 生成 html 页面的插件
+            // 指定 模版页面，将来会根据指定的页面路径，生成内存中的页面
             template:path.join(__dirname,'./src/index.html'),
+            // 指定生成的内存中页面的名称
+            filename: 'index.html'
         })
-    ]
+    ],
+    // 这个节点，用于配置所有的第三方模块 加载器
+    module:{
+        rules:[
+            // 所有第三方模块的匹配规则
+            // 配置处理 .css 文件的第三方loader模块的 匹配规则
+            { test:/\.css$/,use:['style-loader','css-loader'] }
+        ]
+    }
 }
 
 //当我们在控制台，直接输入webpack命令的时候webpack做出以下几步
