@@ -8,6 +8,10 @@ import $ from 'jquery'
 // webpack ./src/main.js ./dist/bundle.js
 //const $ = require(''jquery)
 
+
+import './css/index.css'
+
+
 // 使用impot语法，导入css样式表
 // 注意：webpack，默认只能打包处理 js 类型的文件，无法处理其他的非js类型的文件；
 // 如果要处理 非js类型文件，我们需要手动安装一些合适的第三方loader加载器
@@ -15,7 +19,22 @@ import $ from 'jquery'
 // 2.打开webpack.config.js 这个配置文件，在里面新增一个配置节点叫 modele，
 // 他是一个对象；在这个module 对象身上，有个rules属性，这个rules属性是个数组中，存放了
 // 所有第三方文件的匹配和处理规则；
-import './css/index.css'
+
+import './css/index.less'
+// npm i less -D
+//安装less-loader:npm i less-loader -D
+
+import './css/index.scss'
+// npm i node-sass -D
+//npm i sass-loader -D
+
+//注意：webpack 处理第三方文件类型的过程
+// 1.发现这个 要处理的文件不是js文件，然后就去 配置文件中查找有没有对应的第三方 loader规则
+// 2.如果能找到对应的规则，就会调用对应的loader 处理 这种文件类型
+// 3.在调用loader的时候，是从后往前调用的
+// 4.当最后一个 loader调用完毕，会把处理的结果，直接交给webpack 进行打包合并，最终输出到bundle.js中
+
+
 
 $(function (){
     $('li:odd').css('backgroundColor','yellow')

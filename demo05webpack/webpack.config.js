@@ -60,7 +60,13 @@ module.exports = {
         rules:[
             // 所有第三方模块的匹配规则
             // 配置处理 .css 文件的第三方loader模块的 匹配规则
-            { test:/\.css$/,use:['style-loader','css-loader'] }
+            { test:/\.css$/,use:['style-loader','css-loader'] },
+            // 第三方loader 规则
+            // 配置处理 .less 文件的第三方 loader 规则
+            { test:/\.less$/,use:['style-loader','css-loader','less-loader']},
+            // 第三方loader 规则
+            // 配置处理 .scss 文件的第三方 loader 规则
+            { test:/\.scss$/,use:['style-loader','css-loader','sass-loader']},
         ]
     }
 }
