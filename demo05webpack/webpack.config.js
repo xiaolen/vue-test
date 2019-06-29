@@ -41,8 +41,9 @@ module.exports = {
 //         // 启用热更新
 //         hot: true
 //     },
-//      // 配置插件的节点
-        
+
+
+ // 配置插件的节点   
     plugins:[
     //new一个热更新的 模块对象，这是 启用热更新的第三步
         // new webpack.HotModuleReplacementPlugin()

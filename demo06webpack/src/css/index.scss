@@ -1,0 +1,24 @@
+html,body{
+    .box{
+        width: 220px;
+        height: 120px;
+        // background-color: red;
+        // 默认情况下，webpack 无法处理 css文件中的url地址，不管是图片还是字体库
+        // 只要是url地址 都处理了
+        // npm i url-loader file-loader -D
+        background: url('../img/timg.jpg');
+        background-size: cover;
+
+    }
+    // .box2{
+    //     width: 220px;
+    //     height: 120px;
+    //     // background-color: red;
+    //     // 默认情况下，webpack 无法处理 css文件中的url地址，不管是图片还是字体库
+    //     // 只要是url地址 都处理了
+    //     // npm i url-loader file-loader -D
+    //     background: url('../img/timg.jpg');
+    //     background-size: cover;
+
+    // }
+}
