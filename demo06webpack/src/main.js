@@ -9,3 +9,49 @@ import './css/index.scss'
 // 路径的node_modules这一层目录，直接写 包名称，然后后面跟上具体的文件路径
 // 不写node_modules这一层目录默认直接去node_modules目录下找
 import 'bootstrap/dist/css/bootstrap.css'
+
+
+//class 关键字，是es6中提供的新语法，是用来实现es6中面向对象编程的方式
+class Person{
+    //使用 static 关键字，可以直接定义静态属性
+    // 所谓的静态属性，就是 可以直接通过 类名，直接访问的属性
+    // 实例属性：只能通过类的实例，来访问的属性，叫做实例属性
+    static info = { name: 'zs',age: 20}
+}
+
+// 访问person类身上 info 静态属性
+console.log(Person.info)
+// 在webpack中 默认只能处理一部分 es6 的新语法，一些更高级的es6羽凡或者es7语法
+// webpack 是处理不了的：这时候 就需要借助雨第三方的 loader， 来帮助webpack 处理这些高级的语法
+// 当第三方 loader 把 高级语法转为低级语法之后，回吧结果交给webpack去打包 到bundle.js中
+
+// 通过 babel 可以帮助我们将 高级的语法转换成低级语法
+// 在webpacak中可以运行如下两套 命令，安装两套，去安装Babel 相关的loader功能
+// 第一套包：npm i babel-core babek-loader babel-plugin-transform-runtime -D
+// 第二套包：npm i babel-preset-env babel-preset-stage-0 -D
+
+
+
+
+
+
+
+//java c# 实现面向对象的方式完全一样 class是从后端语言中借鉴过来的
+// 来实现面向对象
+// var p1 = new Person()
+
+// function Animal(name){
+
+//     this.name = name
+// }
+
+// Animal.info = 123
+
+// var a1 = new Animal('小花')
+
+// // 这是静态属性
+// console.log(Animal.info)
+
+// console.log(a1.name)
+
+// var al = new Animal('xh')
