@@ -42,6 +42,8 @@ import 'bootstrap/dist/css/bootstrap.css'
                 //     "presets": ["env", "stage-0"],
                 //     "plugins": ["transform-runtime"]
                 // }
+// 了解：目前，我们安装的babel-preset-env，是比较新的语法，之前，我们安装的是babel-preset-es2015，
+// 现在，出了更新的，语法插件，叫做babel-preset，它包含了 所有的
 
 
 
